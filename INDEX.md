@@ -103,7 +103,7 @@ Definição de variáveis com validações:
 - `digitalocean_token` - Token de autenticação (obrigatório)
 - `region` - Região DigitalOcean (padrão: nyc1)
 - `node_count` - Número de nós Kubernetes (padrão: 3)
-- `postgres_version` - Versão PostgreSQL (padrão: 15)
+- `postgres_version` - Versão PostgreSQL (padrão: 17)
 - E mais...
 
 ```bash
@@ -172,9 +172,9 @@ iac/
 │   └── kubeconfig.yaml        # Auto-gerado
 │
 └── 📦 Recursos Criados
-    ├── VPC (vpc-2)
+    ├── VPC (vpc-1)
     ├── Kubernetes Cluster (k8s-1)
-    └── PostgreSQL Database (example-postgres-cluster)
+    └── PostgreSQL Database (example-postgres-cluster, versão 17)
 ```
 
 ---

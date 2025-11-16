@@ -8,7 +8,7 @@ Este projeto utiliza Terraform para provisionar e gerenciar recursos na DigitalO
 
 - **Virtual Private Cloud (VPC)**: Rede isolada com range `10.20.0.0/24`
 - **Kubernetes Cluster**: DOKS (DigitalOcean Kubernetes Service) versão 1.33.1 com 3 nós
-- **PostgreSQL Database**: Banco de dados gerenciado versão 15
+- **PostgreSQL Database**: Banco de dados gerenciado versão 17
 - **Kubeconfig**: Arquivo de configuração automático para acesso ao cluster
 
 ## 🏗️ Arquitetura
@@ -31,7 +31,7 @@ Este projeto utiliza Terraform para provisionar e gerenciar recursos na DigitalO
 │                                         │
 │  ┌──────────────────────────────────┐  │
 │  │  PostgreSQL Cluster              │  │
-│  │  - Versão 15                     │  │
+│  │  - Versão 17                     │  │
 │  │  - db-s-1vcpu-1gb                │  │
 │  └──────────────────────────────────┘  │
 │                                         │
@@ -41,7 +41,7 @@ Este projeto utiliza Terraform para provisionar e gerenciar recursos na DigitalO
 ## 📦 Recursos Criados
 
 ### 1. VPC (Virtual Private Cloud)
-- **Nome**: `vpc-2`
+- **Nome**: `vpc-1`
 - **Região**: `nyc1` (Nova York)
 - **Range de IP**: `10.20.0.0/24`
 - **Uso**: Rede isolada para todos os recursos
@@ -59,7 +59,7 @@ Este projeto utiliza Terraform para provisionar e gerenciar recursos na DigitalO
 ### 3. PostgreSQL Database
 - **Nome**: `example-postgres-cluster`
 - **Engine**: PostgreSQL
-- **Versão**: 15
+- **Versão**: 17
 - **Size**: `db-s-1vcpu-1gb` (1 vCPU, 1GB RAM)
 - **Region**: `nyc1`
 - **Nodes**: 1 (single node)
