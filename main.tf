@@ -15,40 +15,34 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_vpc" "vpc" {
-  name     = "vpc-2"
+  name     = var.vpc_name
   region   = var.region
-  ip_range = "10.20.0.0/24"
+  ip_range = var.vpc_ip_range
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s" {
-  name     = "k8s-1"
+  name     = var.kubernetes_cluster_name
   region   = var.region
-  version  = "1.33.1-do.5"
+  version  = var.kubernetes_version
   vpc_uuid = digitalocean_vpc.vpc.id
 
   node_pool {
-    name       = "default"
-    size       = "s-2vcpu-4gb"
-    node_count = 3
+    name       = var.node_pool_name
+    size       = var.node_pool_size
+    node_count = var.node_count
   }
 }
 
 resource "digitalocean_database_cluster" "postgres-production" {
-  name       = "example-postgres-cluster"
+  name       = var.postgres_cluster_name
   engine     = "pg"
-  version    = "15"
-  size       = "db-s-1vcpu-1gb"
+  version    = var.postgres_version
+  size       = var.postgres_size
   region     = var.region
-  node_count = 1
+  node_count = var.postgres_node_count
 }
 
 resource "local_file" "kubeconfig" {
   content  = digitalocean_kubernetes_cluster.k8s.kube_config[0].raw_config
   filename = "kubeconfig.yaml"
-}
-
-variable "digitalocean_token" {}
-
-variable "region" {
-  default = "nyc1"
 }

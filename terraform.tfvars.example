@@ -1,0 +1,7 @@
+# DigitalOcean API Token
+# Obtenha em: https://cloud.digitalocean.com/account/api/tokens
+digitalocean_token = "dop_v1_seu_token_aqui"
+
+# Região DigitalOcean
+# Opções: nyc1, nyc3, sfo1, sfo3, lon1, ams3, fra1, blr1, sgp1, syd1, tor1
+region = "nyc1"
