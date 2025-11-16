@@ -21,7 +21,7 @@ variable "region" {
 variable "vpc_name" {
   description = "Nome da VPC"
   type        = string
-  default     = "vpc-2"
+  default     = "vpc-1"
 }
 
 variable "vpc_ip_range" {
@@ -74,10 +74,10 @@ variable "postgres_cluster_name" {
 variable "postgres_version" {
   description = "Versão do PostgreSQL"
   type        = string
-  default     = "15"
+  default     = "17"
 
   validation {
-    condition     = contains(["11", "12", "13", "14", "15", "16"], var.postgres_version)
+    condition     = contains(["11", "12", "13", "14", "15", "16", "17"], var.postgres_version)
     error_message = "Versão PostgreSQL não suportada."
   }
 }
