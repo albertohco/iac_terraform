@@ -2,14 +2,22 @@ name: Terraform Deployment
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_digitalocean_token: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-    
-      
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init -backend-config="conn_str=${{ secrets.STATE_CONNECTION_STRING}}"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
